@@ -1,0 +1,18 @@
+2025-04-28 12:50:45,628 - __main__ - INFO - Starting Trading Strategy Aggregation System
+2025-04-28 12:50:45,629 - __main__ - INFO - Loading market data...
+2025-04-28 12:50:45,629 - data.data_loader - INFO - Generating sample market data
+2025-04-28 12:50:45,635 - __main__ - INFO - Loaded 261 data points
+2025-04-28 12:50:45,636 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:50:45,636 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:50:45,636 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:50:45,637 - __main__ - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:50:45,637 - __main__ - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:50:45,637 - __main__ - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:50:45,639 - __main__ - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:50:45,641 - __main__ - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:50:45,643 - __main__ - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:50:45,644 - __main__ - INFO - Aggregated signals using method: weighted_average
+2025-04-28 12:50:45,706 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:50:45,807 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-28 12:50:45,808 - reports.report_generator - INFO - Generated report: 
+2025-04-28 12:50:45,808 - __main__ - ERROR - Failed to generate report

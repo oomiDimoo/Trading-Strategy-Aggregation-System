@@ -1,0 +1,226 @@
+2025-04-28 10:35:05,142 - __main__ - ERROR - PyQt5 is not installed. Please install it with: pip install PyQt5
+2025-04-28 10:39:28,790 - gui.main_window - INFO - Main window initialized
+2025-04-28 10:40:14,750 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 10:40:14,751 - data.data_loader - INFO - Generating sample market data
+2025-04-28 10:40:14,764 - gui.controllers.execution_controller - INFO - Loaded 261 data points
+2025-04-28 10:40:14,765 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 10:40:14,765 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 10:40:14,765 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 10:40:14,766 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 10:40:14,766 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 10:40:14,766 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 10:40:14,768 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 10:40:14,771 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 10:40:14,773 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 10:40:14,774 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 10:40:14,862 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 10:40:14,962 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-28 10:40:14,962 - reports.report_generator - INFO - Generated report: 
+2025-04-28 10:40:14,963 - gui.controllers.execution_controller - ERROR - Failed to generate report
+2025-04-28 10:40:42,359 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 10:40:42,359 - data.data_loader - INFO - Generating sample market data
+2025-04-28 10:40:42,363 - gui.controllers.execution_controller - INFO - Loaded 261 data points
+2025-04-28 10:40:42,365 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 10:40:42,365 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 10:40:42,365 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 10:40:42,366 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 10:40:42,366 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 10:40:42,366 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 10:40:42,368 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 10:40:42,370 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 10:40:42,372 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 10:40:42,373 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 10:40:42,384 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 10:40:42,481 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_104042.csv
+2025-04-28 10:40:42,482 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_104042.csv
+2025-04-28 10:42:12,390 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 10:42:12,454 - gui.controllers.execution_controller - INFO - Loaded 8785 data points
+2025-04-28 10:42:12,455 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 10:42:12,455 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 10:42:12,455 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 10:42:12,455 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 10:42:12,456 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 10:42:12,456 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 10:42:12,458 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 10:42:12,461 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 10:42:12,464 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 10:42:12,465 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 10:42:12,479 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 10:42:12,678 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_104212.csv
+2025-04-28 10:42:12,678 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_104212.csv
+2025-04-28 10:52:25,710 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 10:52:25,775 - gui.controllers.execution_controller - INFO - Loaded 3505 data points
+2025-04-28 10:52:25,776 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 10:52:25,776 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 10:52:25,776 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 10:52:25,776 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 10:52:25,777 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 10:52:25,777 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 10:52:25,779 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 10:52:25,782 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 10:52:25,784 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 10:52:25,786 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 10:52:25,801 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 10:52:25,970 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_105225.csv
+2025-04-28 10:52:25,971 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_105225.csv
+2025-04-28 10:55:48,984 - gui.main_window - INFO - Application closed
+2025-04-28 12:47:21,173 - gui.main_window - INFO - Main window initialized
+2025-04-28 12:47:35,491 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:47:35,492 - data.data_loader - INFO - Generating sample market data
+2025-04-28 12:47:35,499 - gui.controllers.execution_controller - INFO - Loaded 261 data points
+2025-04-28 12:47:35,499 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:47:35,500 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:47:35,500 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:47:35,500 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:47:35,501 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:47:35,501 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:47:35,503 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:47:35,506 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:47:35,509 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:47:35,510 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 12:47:35,524 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:47:35,639 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-28 12:47:35,641 - reports.report_generator - INFO - Generated report: 
+2025-04-28 12:47:35,641 - gui.controllers.execution_controller - ERROR - Failed to generate report
+2025-04-28 12:48:24,739 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:48:24,809 - gui.controllers.execution_controller - INFO - Loaded 8593 data points
+2025-04-28 12:48:24,809 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:48:24,810 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:48:24,810 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:48:24,810 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:48:24,811 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:48:24,811 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:48:24,813 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:48:24,817 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:48:24,820 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:48:24,821 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 12:48:24,835 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:48:25,000 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-28 12:48:25,000 - reports.report_generator - INFO - Generated report: 
+2025-04-28 12:48:25,001 - gui.controllers.execution_controller - ERROR - Failed to generate report
+2025-04-28 12:48:35,435 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:48:35,500 - gui.controllers.execution_controller - INFO - Loaded 8593 data points
+2025-04-28 12:48:35,500 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:48:35,500 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:48:35,500 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:48:35,501 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:48:35,501 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:48:35,501 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:48:35,503 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:48:35,507 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:48:35,509 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:48:35,511 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 12:48:35,524 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:48:35,725 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_124835.csv
+2025-04-28 12:48:35,726 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_124835.csv
+2025-04-28 12:48:46,180 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:48:46,240 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 12:48:46,241 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:48:46,241 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:48:46,241 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:48:46,242 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:48:46,242 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:48:46,242 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:48:46,245 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:48:46,248 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:48:46,250 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:48:46,251 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 12:48:46,265 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:48:46,401 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_124846.csv
+2025-04-28 12:48:46,402 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_124846.csv
+2025-04-28 12:49:25,450 - gui.components.dashboard_tab - INFO - Chart type changed to Bar
+2025-04-28 12:49:26,690 - gui.components.dashboard_tab - INFO - Chart type changed to Candlestick
+2025-04-28 12:49:27,707 - gui.components.dashboard_tab - INFO - Chart type changed to Line
+2025-04-28 12:49:29,564 - gui.components.dashboard_tab - INFO - Period changed to All
+2025-04-28 12:49:56,947 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:49:57,009 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 12:49:57,009 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:49:57,010 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:49:57,010 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:49:57,010 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:49:57,011 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:49:57,011 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:49:57,013 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:49:57,016 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:49:57,018 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:49:57,019 - gui.controllers.execution_controller - INFO - Aggregated signals using method: majority_vote
+2025-04-28 12:49:57,032 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 12:49:57,172 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_124957.csv
+2025-04-28 12:49:57,172 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_124957.csv
+2025-04-28 12:50:16,995 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:50:17,056 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 12:50:17,057 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:50:17,057 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:50:17,057 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:50:17,058 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:50:17,059 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:50:17,059 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:50:17,060 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:50:17,063 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:50:17,065 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:50:17,067 - gui.controllers.execution_controller - INFO - Aggregated signals using method: consensus
+2025-04-28 12:50:17,288 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_125017.csv
+2025-04-28 12:50:17,289 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_125017.csv
+2025-04-28 12:50:36,181 - gui.main_window - INFO - Application closed
+2025-04-28 12:50:51,988 - gui.main_window - INFO - Main window initialized
+2025-04-28 12:51:29,155 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 12:51:29,223 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 12:51:29,223 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 12:51:29,223 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 12:51:29,223 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 12:51:29,224 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 12:51:29,224 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 12:51:29,224 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 12:51:29,226 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 12:51:29,229 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 12:51:29,231 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 12:51:29,233 - gui.controllers.execution_controller - INFO - Aggregated signals using method: consensus
+2025-04-28 12:51:29,497 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_125129.csv
+2025-04-28 12:51:29,497 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_125129.csv
+2025-04-28 12:51:55,668 - gui.main_window - INFO - Application closed
+2025-04-28 16:15:46,550 - gui.main_window - INFO - Main window initialized
+2025-04-28 16:16:25,311 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 16:16:25,384 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 16:16:25,385 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 16:16:25,385 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 16:16:25,385 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 16:16:25,386 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 16:16:25,386 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 16:16:25,387 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 16:16:25,390 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 16:16:25,393 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 16:16:25,395 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 16:16:25,396 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 16:16:25,446 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-28 16:16:25,598 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-28 16:16:25,599 - reports.report_generator - INFO - Generated report: 
+2025-04-28 16:16:25,599 - gui.controllers.execution_controller - ERROR - Failed to generate report
+2025-04-28 16:16:33,975 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 16:16:34,042 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 16:16:34,042 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 16:16:34,042 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 16:16:34,043 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 16:16:34,043 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 16:16:34,043 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 16:16:34,043 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 16:16:34,045 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 16:16:34,048 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 16:16:34,051 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 16:16:34,052 - gui.controllers.execution_controller - INFO - Aggregated signals using method: weighted_average
+2025-04-28 16:16:34,073 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_161634.csv
+2025-04-28 16:16:34,074 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_161634.csv
+2025-04-28 16:16:59,224 - gui.controllers.execution_controller - INFO - Loading market data...
+2025-04-28 16:16:59,283 - gui.controllers.execution_controller - INFO - Loaded 2929 data points
+2025-04-28 16:16:59,284 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-28 16:16:59,284 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-28 16:16:59,284 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-28 16:16:59,285 - gui.controllers.execution_controller - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-28 16:16:59,286 - gui.controllers.execution_controller - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-28 16:16:59,286 - gui.controllers.execution_controller - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-28 16:16:59,288 - gui.controllers.execution_controller - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-28 16:16:59,291 - gui.controllers.execution_controller - INFO - Processed data through strategy: RSIStrategy
+2025-04-28 16:16:59,293 - gui.controllers.execution_controller - INFO - Processed data through strategy: MACDStrategy
+2025-04-28 16:16:59,295 - gui.controllers.execution_controller - INFO - Aggregated signals using method: majority_vote
+2025-04-28 16:16:59,314 - reports.report_generator - INFO - Generated report: reports/output\trading_report_20250428_161659.csv
+2025-04-28 16:16:59,315 - gui.controllers.execution_controller - INFO - Report generated successfully: reports/output\trading_report_20250428_161659.csv
+2025-04-28 16:23:37,361 - gui.main_window - INFO - Application closed

@@ -1,0 +1,47 @@
+2025-04-26 17:12:44,157 - __main__ - WARNING - Configuration file not found: config/config.json, using default configuration
+2025-04-26 17:12:44,158 - __main__ - INFO - Configuration saved to config/config.json
+2025-04-26 17:12:44,158 - __main__ - INFO - Starting Trading Strategy Aggregation System
+2025-04-26 17:12:44,158 - __main__ - INFO - Loading market data...
+2025-04-26 17:12:44,158 - data.data_loader - INFO - Generating sample market data
+2025-04-26 17:12:44,184 - __main__ - INFO - Loaded 261 data points
+2025-04-26 17:12:44,184 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-26 17:12:44,184 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-26 17:12:44,185 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-26 17:12:44,185 - strategies.strategy_factory - ERROR - Error creating strategy MovingAverageCrossover: Can't instantiate abstract class MovingAverageCrossover without an implementation for abstract method 'get_description'
+2025-04-26 17:12:44,185 - __main__ - WARNING - Failed to initialize strategy: MovingAverageCrossover
+2025-04-26 17:12:44,185 - strategies.strategy_factory - ERROR - Error creating strategy RSIStrategy: Can't instantiate abstract class RSIStrategy without an implementation for abstract method 'get_description'
+2025-04-26 17:12:44,186 - __main__ - WARNING - Failed to initialize strategy: RSIStrategy
+2025-04-26 17:12:44,186 - strategies.strategy_factory - ERROR - Error creating strategy MACDStrategy: Can't instantiate abstract class MACDStrategy without an implementation for abstract method 'get_description'
+2025-04-26 17:12:44,186 - __main__ - WARNING - Failed to initialize strategy: MACDStrategy
+2025-04-26 17:12:44,186 - __main__ - ERROR - No strategies were initialized. Exiting.
+2025-04-26 17:17:15,522 - __main__ - INFO - Starting Trading Strategy Aggregation System
+2025-04-26 17:17:15,522 - __main__ - INFO - Loading market data...
+2025-04-26 17:17:15,523 - data.data_loader - INFO - Generating sample market data
+2025-04-26 17:17:15,529 - __main__ - INFO - Loaded 261 data points
+2025-04-26 17:17:15,529 - strategies.strategy_factory - INFO - Registered strategy: MovingAverageCrossover
+2025-04-26 17:17:15,529 - strategies.strategy_factory - INFO - Registered strategy: RSIStrategy
+2025-04-26 17:17:15,529 - strategies.strategy_factory - INFO - Registered strategy: MACDStrategy
+2025-04-26 17:17:15,529 - __main__ - INFO - Initialized strategy: MovingAverageCrossover with weight 1.0
+2025-04-26 17:17:15,529 - __main__ - INFO - Initialized strategy: RSIStrategy with weight 0.8
+2025-04-26 17:17:15,529 - __main__ - INFO - Initialized strategy: MACDStrategy with weight 0.9
+2025-04-26 17:17:15,540 - __main__ - INFO - Processed data through strategy: MovingAverageCrossover
+2025-04-26 17:17:15,543 - __main__ - INFO - Processed data through strategy: RSIStrategy
+2025-04-26 17:17:15,544 - __main__ - INFO - Processed data through strategy: MACDStrategy
+2025-04-26 17:17:15,545 - __main__ - INFO - Signals aggregated successfully
+2025-04-26 17:17:15,546 - __main__ - ERROR - An error occurred: ReportGenerator.generate_report() got an unexpected keyword argument 'strategies'
+Traceback (most recent call last):
+  File "e:\other\test_trea\main.py", line 206, in main
+    report_path = report_generator.generate_report(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ReportGenerator.generate_report() got an unexpected keyword argument 'strategies'
+2025-04-26 17:17:15,547 - __main__ - INFO - Processing data with strategies...
+2025-04-26 17:17:15,548 - __main__ - INFO - Processed data with strategy: MovingAverageCrossover
+2025-04-26 17:17:15,551 - __main__ - INFO - Processed data with strategy: RSIStrategy
+2025-04-26 17:17:15,553 - __main__ - INFO - Processed data with strategy: MACDStrategy
+2025-04-26 17:17:15,553 - __main__ - INFO - Aggregating signals...
+2025-04-26 17:17:15,554 - __main__ - INFO - Aggregated signals using method: weighted_average
+2025-04-26 17:17:15,554 - __main__ - INFO - Generating report...
+2025-04-26 17:17:16,180 - reports.report_generator - ERROR - Error generating price chart: Cannot shift with no freq
+2025-04-26 17:17:16,327 - reports.report_generator - ERROR - Error generating HTML report: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-04-26 17:17:16,327 - reports.report_generator - INFO - Generated report: 
+2025-04-26 17:17:16,327 - __main__ - ERROR - Failed to generate report

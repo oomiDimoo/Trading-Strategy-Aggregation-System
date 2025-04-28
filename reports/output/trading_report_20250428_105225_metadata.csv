@@ -1,0 +1,4 @@
+strategy_name,fast_period,slow_period,signal_threshold,num_trades,weight,period,overbought,oversold,signal_period
+MovingAverageCrossover,20.0,50.0,0.0,41,1.0,,,,
+RSIStrategy,,,,406,0.8,14.0,70.0,30.0,
+MACDStrategy,12.0,26.0,,137,0.9,,,,9.0

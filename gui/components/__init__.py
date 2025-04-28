@@ -1,0 +1,1 @@
+# Trading Strategy Aggregation System - GUI Components Package

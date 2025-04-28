@@ -1,0 +1,46 @@
+{
+    "data_source": {
+        "type": "sample",
+        "symbol": "AAPL",
+        "timeframe": "1d",
+        "start_date": "2024-04-26",
+        "end_date": "2025-04-26"
+    },
+    "strategies": [
+        {
+            "name": "MovingAverageCrossover",
+            "parameters": {
+                "fast_period": 20,
+                "slow_period": 50
+            },
+            "weight": 1.0
+        },
+        {
+            "name": "RSIStrategy",
+            "parameters": {
+                "period": 14,
+                "overbought": 70,
+                "oversold": 30
+            },
+            "weight": 0.8
+        },
+        {
+            "name": "MACDStrategy",
+            "parameters": {
+                "fast_period": 12,
+                "slow_period": 26,
+                "signal_period": 9
+            },
+            "weight": 0.9
+        }
+    ],
+    "aggregator": {
+        "method": "weighted_average",
+        "threshold": 0.5
+    },
+    "report": {
+        "format": "html",
+        "include_plots": true,
+        "output_dir": "reports/output"
+    }
+}
