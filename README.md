@@ -1,3 +1,5 @@
+![Image Description](image.png)
+
 # Trading Strategy Aggregation System
 
 A Python-based system for aggregating signals from multiple trading strategies to generate unified trading decisions.
