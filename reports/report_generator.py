@@ -224,7 +224,7 @@ class ReportGenerator:
             
             for metadata in strategy_metadata:
                 strategy_name = metadata.get("strategy_name", "Unknown")
-                strategy_type = next((s['signal_type'] for s in strategy_signals if s.get('strategy', None) == strategy_name), "Unknown")
+                strategy_type = next((s['signal_type'].iloc[0] for s in strategy_signals if s['strategy'].iloc[0] == strategy_name), "Unknown")
                 weight = metadata.get("weight", 1.0)
                 num_trades = metadata.get("num_trades", 0)
                 

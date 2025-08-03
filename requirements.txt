@@ -15,3 +15,7 @@ PyQt5>=5.15.0  # For GUI application
 # Optional dependencies
 seaborn>=0.11.0  # For enhanced visualizations
 tqdm>=4.62.0  # For progress bars
+
+# Testing dependencies
+pytest>=6.2.0
+pytest-mock>=3.6.0
