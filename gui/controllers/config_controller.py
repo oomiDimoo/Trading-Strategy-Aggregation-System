@@ -22,6 +22,7 @@ class ConfigController:
         """Initialize the configuration controller"""
         self.config = {}
         self.config_path = "config/config.json"
+        self.dirty = False
     
     def create_default_config(self) -> Dict[str, Any]:
         """Create a default configuration"""
@@ -72,6 +73,7 @@ class ConfigController:
             }
         }
         self.config = config
+        self.dirty = False
         return config
     
     def load_config(self, config_path: str) -> bool:
@@ -81,6 +83,7 @@ class ConfigController:
                 with open(config_path, 'r') as f:
                     self.config = json.load(f)
                 self.config_path = config_path
+                self.dirty = False
                 logger.info(f"Configuration loaded from {config_path}")
                 return True
             else:
@@ -97,12 +100,17 @@ class ConfigController:
             with open(config_path, 'w') as f:
                 json.dump(self.config, f, indent=4)
             self.config_path = config_path
+            self.dirty = False
             logger.info(f"Configuration saved to {config_path}")
             return True
         except Exception as e:
             logger.error(f"Error saving configuration: {e}")
             return False
     
+    def is_dirty(self) -> bool:
+        """Check if the configuration has been modified"""
+        return self.dirty
+
     def get_config(self) -> Dict[str, Any]:
         """Get the current configuration"""
         return self.config
@@ -110,6 +118,7 @@ class ConfigController:
     def set_config(self, config: Dict[str, Any]) -> None:
         """Set the current configuration"""
         self.config = config
+        self.dirty = True
     
     def get_data_source_config(self) -> Dict[str, Any]:
         """Get the data source configuration"""
@@ -118,6 +127,7 @@ class ConfigController:
     def set_data_source_config(self, data_source_config: Dict[str, Any]) -> None:
         """Set the data source configuration"""
         self.config["data_source"] = data_source_config
+        self.dirty = True
     
     def get_strategies_config(self) -> List[Dict[str, Any]]:
         """Get the strategies configuration"""
@@ -126,6 +136,7 @@ class ConfigController:
     def set_strategies_config(self, strategies_config: List[Dict[str, Any]]) -> None:
         """Set the strategies configuration"""
         self.config["strategies"] = strategies_config
+        self.dirty = True
     
     def get_aggregator_config(self) -> Dict[str, Any]:
         """Get the aggregator configuration"""
@@ -134,6 +145,7 @@ class ConfigController:
     def set_aggregator_config(self, aggregator_config: Dict[str, Any]) -> None:
         """Set the aggregator configuration"""
         self.config["aggregator"] = aggregator_config
+        self.dirty = True
     
     def get_report_config(self) -> Dict[str, Any]:
         """Get the report configuration"""
@@ -142,3 +154,4 @@ class ConfigController:
     def set_report_config(self, report_config: Dict[str, Any]) -> None:
         """Set the report configuration"""
         self.config["report"] = report_config
+        self.dirty = True

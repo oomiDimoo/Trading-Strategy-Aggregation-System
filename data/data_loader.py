@@ -50,8 +50,7 @@ class DataLoader:
         elif self.source_type == "sample":
             return self._generate_sample_data()
         else:
-            logger.warning(f"Unknown data source type: {self.source_type}, generating sample data")
-            return self._generate_sample_data()
+            raise ValueError(f"Unknown data source type: {self.source_type}")
     
     def _load_from_csv(self) -> pd.DataFrame:
         """
@@ -60,53 +59,46 @@ class DataLoader:
         Returns:
             DataFrame containing market data
         """
-        try:
-            # Check if file exists
-            if not os.path.exists(self.source_path):
-                logger.warning(f"CSV file not found: {self.source_path}, generating sample data")
-                return self._generate_sample_data()
-            
-            # Load data from CSV
-            df = pd.read_csv(self.source_path)
-            
-            # Ensure required columns exist
-            required_columns = ["date", "open", "high", "low", "close", "volume"]
-            missing_columns = [col for col in required_columns if col not in df.columns]
-            
-            if missing_columns:
-                logger.warning(f"CSV file missing required columns: {missing_columns}, generating sample data")
-                return self._generate_sample_data()
-            
-            # Convert date column to datetime
-            df["date"] = pd.to_datetime(df["date"])
-            df.set_index("date", inplace=True)
-            
-            # Filter by date range if specified
-            if self.start_date:
-                start_date = pd.to_datetime(self.start_date)
-                df = df[df.index >= start_date]
-            
-            if self.end_date:
-                end_date = pd.to_datetime(self.end_date)
-                df = df[df.index <= end_date]
-            
-            # Ensure column names are standardized
-            df.columns = [col.lower() for col in df.columns]
-            
-            # Set metadata
-            self.metadata = {
-                "source": "csv",
-                "path": self.source_path,
-                "rows": len(df),
-                "start_date": df.index.min().strftime("%Y-%m-%d") if not df.empty else None,
-                "end_date": df.index.max().strftime("%Y-%m-%d") if not df.empty else None
-            }
-            
-            return df
-            
-        except Exception as e:
-            logger.error(f"Error loading data from CSV: {e}")
-            return self._generate_sample_data()
+        # Check if file exists
+        if not os.path.exists(self.source_path):
+            raise FileNotFoundError(f"CSV file not found: {self.source_path}")
+
+        # Load data from CSV
+        df = pd.read_csv(self.source_path)
+
+        # Ensure required columns exist
+        required_columns = ["date", "open", "high", "low", "close", "volume"]
+        missing_columns = [col for col in required_columns if col not in df.columns]
+
+        if missing_columns:
+            raise ValueError(f"CSV file missing required columns: {missing_columns}")
+
+        # Convert date column to datetime
+        df["date"] = pd.to_datetime(df["date"])
+        df.set_index("date", inplace=True)
+
+        # Filter by date range if specified
+        if self.start_date:
+            start_date = pd.to_datetime(self.start_date)
+            df = df[df.index >= start_date]
+
+        if self.end_date:
+            end_date = pd.to_datetime(self.end_date)
+            df = df[df.index <= end_date]
+
+        # Ensure column names are standardized
+        df.columns = [col.lower() for col in df.columns]
+
+        # Set metadata
+        self.metadata = {
+            "source": "csv",
+            "path": self.source_path,
+            "rows": len(df),
+            "start_date": df.index.min().strftime("%Y-%m-%d") if not df.empty else None,
+            "end_date": df.index.max().strftime("%Y-%m-%d") if not df.empty else None
+        }
+
+        return df
     
     def _load_from_yfinance(self) -> pd.DataFrame:
         """
@@ -117,41 +109,39 @@ class DataLoader:
         """
         try:
             import yfinance as yf
-            
-            # Set default date range if not specified
-            end_date = pd.to_datetime(self.end_date) if self.end_date else datetime.now()
-            start_date = pd.to_datetime(self.start_date) if self.start_date else end_date - timedelta(days=365)
-            
-            # Download data
-            df = yf.download(
-                self.symbol,
-                start=start_date,
-                end=end_date,
-                interval=self.timeframe,
-                progress=False
-            )
-            
-            # Rename columns to lowercase
-            df.columns = [col.lower() for col in df.columns]
-            
-            # Set metadata
-            self.metadata = {
-                "source": "yfinance",
-                "symbol": self.symbol,
-                "timeframe": self.timeframe,
-                "rows": len(df),
-                "start_date": df.index.min().strftime("%Y-%m-%d") if not df.empty else None,
-                "end_date": df.index.max().strftime("%Y-%m-%d") if not df.empty else None
-            }
-            
-            return df
-            
         except ImportError:
-            logger.error("yfinance package not installed, please install with: pip install yfinance")
-            return self._generate_sample_data()
-        except Exception as e:
-            logger.error(f"Error loading data from Yahoo Finance: {e}")
-            return self._generate_sample_data()
+            raise ImportError("yfinance package not installed. Please install it with: pip install yfinance")
+
+        # Set default date range if not specified
+        end_date = pd.to_datetime(self.end_date) if self.end_date else datetime.now()
+        start_date = pd.to_datetime(self.start_date) if self.start_date else end_date - timedelta(days=365)
+
+        # Download data
+        df = yf.download(
+            self.symbol,
+            start=start_date,
+            end=end_date,
+            interval=self.timeframe,
+            progress=False
+        )
+
+        if df.empty:
+            raise ValueError(f"No data found for symbol {self.symbol} from yfinance.")
+
+        # Rename columns to lowercase
+        df.columns = [col.lower() for col in df.columns]
+
+        # Set metadata
+        self.metadata = {
+            "source": "yfinance",
+            "symbol": self.symbol,
+            "timeframe": self.timeframe,
+            "rows": len(df),
+            "start_date": df.index.min().strftime("%Y-%m-%d") if not df.empty else None,
+            "end_date": df.index.max().strftime("%Y-%m-%d") if not df.empty else None
+        }
+
+        return df
     
     def _load_from_alpha_vantage(self) -> pd.DataFrame:
         """
@@ -162,17 +152,19 @@ class DataLoader:
         """
         try:
             from alpha_vantage.timeseries import TimeSeries
-            
-            # Get API key from config
-            api_key = self.config.get("api_key")
-            if not api_key:
-                logger.error("Alpha Vantage API key not provided")
-                return self._generate_sample_data()
-            
-            # Initialize Alpha Vantage API
-            ts = TimeSeries(key=api_key, output_format='pandas')
-            
-            # Get data based on timeframe
+        except ImportError:
+            raise ImportError("alpha_vantage package not installed. Please install it with: pip install alpha_vantage")
+
+        # Get API key from config
+        api_key = self.config.get("api_key")
+        if not api_key:
+            raise ValueError("Alpha Vantage API key not provided in the configuration.")
+
+        # Initialize Alpha Vantage API
+        ts = TimeSeries(key=api_key, output_format='pandas')
+
+        # Get data based on timeframe
+        try:
             if self.timeframe == "1d":
                 data, meta_data = ts.get_daily(symbol=self.symbol, outputsize='full')
             elif self.timeframe == "1h":
@@ -180,37 +172,36 @@ class DataLoader:
             else:
                 logger.warning(f"Unsupported timeframe for Alpha Vantage: {self.timeframe}, using daily")
                 data, meta_data = ts.get_daily(symbol=self.symbol, outputsize='full')
-            
-            # Rename columns
-            data.columns = [col.split('. ')[1].lower() for col in data.columns]
-            
-            # Filter by date range if specified
-            if self.start_date:
-                start_date = pd.to_datetime(self.start_date)
-                data = data[data.index >= start_date]
-            
-            if self.end_date:
-                end_date = pd.to_datetime(self.end_date)
-                data = data[data.index <= end_date]
-            
-            # Set metadata
-            self.metadata = {
-                "source": "alpha_vantage",
-                "symbol": self.symbol,
-                "timeframe": self.timeframe,
-                "rows": len(data),
-                "start_date": data.index.min().strftime("%Y-%m-%d") if not data.empty else None,
-                "end_date": data.index.max().strftime("%Y-%m-%d") if not data.empty else None
-            }
-            
-            return data
-            
-        except ImportError:
-            logger.error("alpha_vantage package not installed, please install with: pip install alpha_vantage")
-            return self._generate_sample_data()
-        except Exception as e:
-            logger.error(f"Error loading data from Alpha Vantage: {e}")
-            return self._generate_sample_data()
+        except ValueError as e:
+            # Catch potential errors from the API, e.g., invalid symbol
+            raise ValueError(f"Error fetching data from Alpha Vantage for symbol {self.symbol}: {e}")
+
+        if data.empty:
+            raise ValueError(f"No data found for symbol {self.symbol} from Alpha Vantage.")
+
+        # Rename columns
+        data.columns = [col.split('. ')[1].lower() for col in data.columns]
+
+        # Filter by date range if specified
+        if self.start_date:
+            start_date = pd.to_datetime(self.start_date)
+            data = data[data.index >= start_date]
+
+        if self.end_date:
+            end_date = pd.to_datetime(self.end_date)
+            data = data[data.index <= end_date]
+
+        # Set metadata
+        self.metadata = {
+            "source": "alpha_vantage",
+            "symbol": self.symbol,
+            "timeframe": self.timeframe,
+            "rows": len(data),
+            "start_date": data.index.min().strftime("%Y-%m-%d") if not data.empty else None,
+            "end_date": data.index.max().strftime("%Y-%m-%d") if not data.empty else None
+        }
+
+        return data
     
     def _generate_sample_data(self) -> pd.DataFrame:
         """
