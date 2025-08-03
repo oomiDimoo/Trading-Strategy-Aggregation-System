@@ -142,17 +142,27 @@ class MainWindow(QMainWindow):
     
     def new_config(self):
         """Create a new configuration"""
-        reply = QMessageBox.question(self, "New Configuration",
-                                    "Are you sure you want to create a new configuration? "
-                                    "All unsaved changes will be lost.",
-                                    QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if self.config_controller.is_dirty():
+            reply = QMessageBox.question(self, "New Configuration",
+                                        "You have unsaved changes. Are you sure you want to create a new configuration? "
+                                        "All unsaved changes will be lost.",
+                                        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.No:
+                return
         
-        if reply == QMessageBox.Yes:
-            self.load_default_config()
-            self.statusBar().showMessage("New configuration created")
+        self.load_default_config()
+        self.statusBar().showMessage("New configuration created")
     
     def load_config(self):
         """Load configuration from file"""
+        if self.config_controller.is_dirty():
+            reply = QMessageBox.question(self, "Load Configuration",
+                                        "You have unsaved changes. Are you sure you want to load a new configuration? "
+                                        "All unsaved changes will be lost.",
+                                        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.No:
+                return
+
         file_path, _ = QFileDialog.getOpenFileName(self, "Load Configuration",
                                                 "config", "JSON Files (*.json)")
         
@@ -166,6 +176,12 @@ class MainWindow(QMainWindow):
     
     def save_config(self):
         """Save configuration to file"""
+        # Update configuration from UI before saving
+        self.data_tab.update_config()
+        self.strategy_tab.update_config()
+        self.aggregator_tab.update_config()
+        self.report_tab.update_config()
+
         file_path, _ = QFileDialog.getSaveFileName(self, "Save Configuration",
                                                 "config/config.json", "JSON Files (*.json)")
         
@@ -220,13 +236,15 @@ class MainWindow(QMainWindow):
     
     def closeEvent(self, event):
         """Handle window close event"""
-        reply = QMessageBox.question(self, "Exit",
-                                    "Are you sure you want to exit? "
-                                    "All unsaved changes will be lost.",
-                                    QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-        
-        if reply == QMessageBox.Yes:
+        if self.config_controller.is_dirty():
+            reply = QMessageBox.question(self, "Exit",
+                                        "You have unsaved changes. Are you sure you want to exit?",
+                                        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                event.accept()
+                logger.info("Application closed")
+            else:
+                event.ignore()
+        else:
             event.accept()
             logger.info("Application closed")
-        else:
-            event.ignore()
