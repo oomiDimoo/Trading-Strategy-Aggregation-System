@@ -42,5 +42,44 @@
         "format": "html",
         "include_plots": true,
         "output_dir": "reports/output"
+    },
+    "strategy_defaults": {
+        "BollingerBandsStrategy": {
+            "period": 20,
+            "std_dev": 2.0,
+            "price_source": "close"
+        },
+        "FibonacciRetracementStrategy": {
+            "trend_period": 50,
+            "swing_lookback": 20,
+            "retracement_levels": [0.236, 0.382, 0.5, 0.618, 0.786],
+            "level_tolerance": 0.01
+        },
+        "IchimokuCloudStrategy": {
+            "tenkan_period": 9,
+            "kijun_period": 26,
+            "senkou_b_period": 52,
+            "displacement": 26
+        },
+        "VolumeProfileStrategy": {
+            "num_bins": 20,
+            "lookback_period": 100,
+            "volume_threshold": 0.8,
+            "signal_lookback": 5
+        },
+        "MACDStrategy": {
+            "fast_period": 12,
+            "slow_period": 26,
+            "signal_period": 9
+        },
+        "MovingAverageCrossover": {
+            "fast_period": 20,
+            "slow_period": 50
+        },
+        "RSIStrategy": {
+            "period": 14,
+            "overbought": 70,
+            "oversold": 30
+        }
     }
 }

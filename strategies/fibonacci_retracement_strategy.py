@@ -28,15 +28,6 @@ class FibonacciRetracementStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "trend_period": 50,
-                "swing_lookback": 20,
-                "retracement_levels": [0.236, 0.382, 0.5, 0.618, 0.786],
-                "level_tolerance": 0.01
-            }
-        
         # Extract parameters
         self.trend_period = self.parameters.get("trend_period", 50)
         self.swing_lookback = self.parameters.get("swing_lookback", 20)
@@ -158,6 +149,7 @@ class FibonacciRetracementStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         if len(signals) < self.trend_period + self.swing_lookback + 10:
             return
@@ -178,9 +170,27 @@ class FibonacciRetracementStrategy(Strategy):
         win_rate = wins / num_trades if num_trades > 0 else 0
         
         # Store metrics in metadata
-        self.metadata = {
+        self.metadata.update({
             "num_trades": num_trades,
             "win_rate": win_rate,
             "strategy_type": "Fibonacci Retracement",
             "parameters": self.parameters
-        }
+        })
+
+    def get_signal_type(self) -> str:
+        """
+        Get the type of signals this strategy generates.
+
+        Returns:
+            Signal type description
+        """
+        return "Fibonacci Retracement"
+
+    def get_description(self) -> str:
+        """
+        Get a description of this strategy.
+
+        Returns:
+            Strategy description
+        """
+        return f"Fibonacci Retracement ({self.trend_period}, {self.swing_lookback})"
