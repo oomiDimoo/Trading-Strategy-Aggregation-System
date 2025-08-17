@@ -5,6 +5,8 @@ from abc import ABC, abstractmethod
 import pandas as pd
 from typing import Dict, Any, List, Union, Optional
 
+from config.config_loader import get_strategy_defaults
+
 class Strategy(ABC):
     """
     Abstract base class for all trading strategies.
@@ -23,6 +25,8 @@ class Strategy(ABC):
         """
         self.name = name
         self.parameters = parameters or {}
+        if not self.parameters:
+            self.parameters = get_strategy_defaults(self.__class__.__name__)
         self.weight = 1.0  # Default weight
         self.signals = None
         self.metadata = {}
@@ -80,6 +84,28 @@ class Strategy(ABC):
             Dictionary of metadata
         """
         return self.metadata
+
+    def _calculate_performance_metrics(self, data: pd.DataFrame, signals: pd.DataFrame) -> None:
+        """
+        Calculate performance metrics for the strategy.
+
+        Args:
+            data: Original market data
+            signals: Generated signals
+        """
+        from reports.performance_metrics import (
+            calculate_sharpe_ratio,
+            calculate_sortino_ratio,
+            calculate_max_drawdown,
+            calculate_profit_factor,
+        )
+
+        returns = data['close'].pct_change().dropna()
+
+        self.metadata['sharpe_ratio'] = calculate_sharpe_ratio(returns)
+        self.metadata['sortino_ratio'] = calculate_sortino_ratio(returns)
+        self.metadata['max_drawdown'] = calculate_max_drawdown(returns)
+        self.metadata['profit_factor'] = calculate_profit_factor(returns)
     
     @abstractmethod
     def process_data(self, data: pd.DataFrame) -> pd.DataFrame:

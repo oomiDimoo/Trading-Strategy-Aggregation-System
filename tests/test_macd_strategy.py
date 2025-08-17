@@ -18,13 +18,19 @@ def market_data():
     return pd.DataFrame(data, index=dates)
 
 
+import json
+
 def test_macd_strategy_init_defaults():
     """Test MACDStrategy initialization with default parameters."""
     strategy = MACDStrategy(name="MACD_default")
+    with open('config/config.json', 'r') as f:
+        config = json.load(f)
+    defaults = config['strategy_defaults']['MACDStrategy']
+
     assert strategy.name == "MACD_default"
-    assert strategy.fast_period == 12
-    assert strategy.slow_period == 26
-    assert strategy.signal_period == 9
+    assert strategy.fast_period == defaults['fast_period']
+    assert strategy.slow_period == defaults['slow_period']
+    assert strategy.signal_period == defaults['signal_period']
 
 
 def test_macd_strategy_init_custom():

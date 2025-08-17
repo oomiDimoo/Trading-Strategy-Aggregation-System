@@ -28,14 +28,6 @@ class RSIStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "period": 14,
-                "overbought": 70,
-                "oversold": 30
-            }
-        
         # Extract parameters
         self.period = self.parameters.get("period", 14)
         self.overbought = self.parameters.get("overbought", 70)
@@ -103,6 +95,7 @@ class RSIStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         if len(signals) < self.period + 10:
             return
@@ -114,14 +107,14 @@ class RSIStrategy(Strategy):
         num_trades = (signal_changes != 0).sum()
         
         # Store metadata
-        self.metadata = {
+        self.metadata.update({
             "strategy_name": self.name,
             "period": self.period,
             "overbought": self.overbought,
             "oversold": self.oversold,
             "num_trades": num_trades,
             "weight": self.weight
-        }
+        })
     
     def get_signal_type(self) -> str:
         """

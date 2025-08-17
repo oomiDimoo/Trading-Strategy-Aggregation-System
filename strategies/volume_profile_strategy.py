@@ -29,15 +29,6 @@ class VolumeProfileStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "num_bins": 20,
-                "lookback_period": 100,
-                "volume_threshold": 0.8,
-                "signal_lookback": 5
-            }
-        
         # Extract parameters
         self.num_bins = self.parameters.get("num_bins", 20)
         self.lookback_period = self.parameters.get("lookback_period", 100)
@@ -95,17 +86,9 @@ class VolumeProfileStrategy(Strategy):
                 low_bin = max(0, np.digitize(row['low'], bins) - 1)
                 high_bin = min(self.num_bins - 1, np.digitize(row['high'], bins) - 1)
                 
-                # Distribute volume proportionally across the bins
-                if high_bin == low_bin:
-                    volume_profile[low_bin] += row['volume']
-                else:
-                    price_span = row['high'] - row['low']
-                    for bin_idx in range(low_bin, high_bin + 1):
-                        bin_low = bins[bin_idx]
-                        bin_high = bins[bin_idx + 1]
-                        overlap = min(bin_high, row['high']) - max(bin_low, row['low'])
-                        bin_volume = row['volume'] * (overlap / price_span)
-                        volume_profile[bin_idx] += bin_volume
+                # Assign volume to the bin of the closing price
+                close_bin = max(0, np.digitize(row['close'], bins) - 1)
+                volume_profile[close_bin] += row['volume']
             
             # Normalize volume profile
             total_volume = np.sum(volume_profile)
@@ -159,6 +142,7 @@ class VolumeProfileStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         if len(signals) < self.lookback_period + 10:
             return
@@ -179,9 +163,27 @@ class VolumeProfileStrategy(Strategy):
         win_rate = wins / num_trades if num_trades > 0 else 0
         
         # Store metrics in metadata
-        self.metadata = {
+        self.metadata.update({
             "num_trades": num_trades,
             "win_rate": win_rate,
             "strategy_type": "Volume Profile",
             "parameters": self.parameters
-        }
+        })
+
+    def get_signal_type(self) -> str:
+        """
+        Get the type of signals this strategy generates.
+
+        Returns:
+            Signal type description
+        """
+        return "Volume Profile"
+
+    def get_description(self) -> str:
+        """
+        Get a description of this strategy.
+
+        Returns:
+            Strategy description
+        """
+        return f"Volume Profile ({self.num_bins}, {self.lookback_period})"

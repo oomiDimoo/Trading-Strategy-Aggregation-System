@@ -28,14 +28,6 @@ class BollingerBandsStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "period": 20,
-                "std_dev": 2.0,
-                "price_source": "close"
-            }
-        
         # Extract parameters
         self.period = self.parameters.get("period", 20)
         self.std_dev = self.parameters.get("std_dev", 2.0)
@@ -108,6 +100,7 @@ class BollingerBandsStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         if len(signals) < self.period + 1:
             return
@@ -125,13 +118,13 @@ class BollingerBandsStrategy(Strategy):
         market_participation = (in_market_periods / total_periods) * 100 if total_periods > 0 else 0
         
         # Store metrics in metadata
-        self.metadata = {
+        self.metadata.update({
             "strategy_name": self.name,
             "parameters": self.parameters,
             "buy_signals": int(buy_signals),
             "sell_signals": int(sell_signals),
             "market_participation": float(market_participation)
-        }
+        })
     
     def get_signal_type(self) -> str:
         """

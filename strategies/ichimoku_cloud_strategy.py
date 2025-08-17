@@ -32,15 +32,6 @@ class IchimokuCloudStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "tenkan_period": 9,
-                "kijun_period": 26,
-                "senkou_b_period": 52,
-                "displacement": 26
-            }
-        
         # Extract parameters
         self.tenkan_period = self.parameters.get("tenkan_period", 9)
         self.kijun_period = self.parameters.get("kijun_period", 26)
@@ -164,6 +155,7 @@ class IchimokuCloudStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         min_periods = max(self.tenkan_period, self.kijun_period, self.senkou_b_period) + self.displacement
         if len(signals) < min_periods + 1:
@@ -182,13 +174,13 @@ class IchimokuCloudStrategy(Strategy):
         market_participation = (in_market_periods / total_periods) * 100 if total_periods > 0 else 0
         
         # Store metrics in metadata
-        self.metadata = {
+        self.metadata.update({
             "strategy_name": self.name,
             "parameters": self.parameters,
             "buy_signals": int(buy_signals),
             "sell_signals": int(sell_signals),
             "market_participation": float(market_participation)
-        }
+        })
     
     def get_signal_type(self) -> str:
         """

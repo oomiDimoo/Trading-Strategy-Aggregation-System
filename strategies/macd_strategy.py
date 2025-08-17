@@ -28,14 +28,6 @@ class MACDStrategy(Strategy):
         """
         super().__init__(name, parameters)
         
-        # Set default parameters if not provided
-        if not self.parameters:
-            self.parameters = {
-                "fast_period": 12,
-                "slow_period": 26,
-                "signal_period": 9
-            }
-        
         # Extract parameters
         self.fast_period = self.parameters.get("fast_period", 12)
         self.slow_period = self.parameters.get("slow_period", 26)
@@ -100,6 +92,7 @@ class MACDStrategy(Strategy):
             data: Original market data
             signals: Generated signals
         """
+        super()._calculate_performance_metrics(data, signals)
         # Skip if we don't have enough data
         if len(signals) < max(self.fast_period, self.slow_period, self.signal_period) + 10:
             return
@@ -111,14 +104,14 @@ class MACDStrategy(Strategy):
         num_trades = (signal_changes != 0).sum() // 2  # Divide by 2 because each trade has entry and exit
         
         # Store metadata
-        self.metadata = {
+        self.metadata.update({
             "strategy_name": self.name,
             "fast_period": self.fast_period,
             "slow_period": self.slow_period,
             "signal_period": self.signal_period,
             "num_trades": num_trades,
             "weight": self.weight
-        }
+        })
     
     def get_signal_type(self) -> str:
         """
