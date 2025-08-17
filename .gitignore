@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+logs/
+
+# Reports
+reports/output/
+
+# VS Code
+.vscode/
+
+# Pytest cache
+.pytest_cache/
